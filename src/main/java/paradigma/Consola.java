@@ -14,7 +14,6 @@ public class Consola {
 		LinkedList<Usuario> usuarios = parque.getUsuarios();
 		LinkedList<Sugerencia> sugerencias = parque.getSugerencias();
 		itinerario.crearTablaItinerario();
-		System.out.println("Base de datos creada");
 		for (Usuario usuario : usuarios) {
 			parque.ordenarPorPreferencia(sugerencias, usuario.getAtraccionPreferida());
 			System.out.println("¡Hola " + usuario.getNombre()
@@ -39,10 +38,11 @@ public class Consola {
 							System.out.println(atraccionDePromocion.getNombre());
 						}
 					}
+
 					Consola.comprarSugerencia(usuario, sugerencia);
 				}
 			}
-
+			
 			System.out.println("\n\nTotal de fichas gastadas: " + usuario.getCostoTotalItinerario()
 					+ "\nTiempo necesario: " + usuario.getTiempoTotalItinerario());
 			String itinerarioString = "";
@@ -52,6 +52,7 @@ public class Consola {
 			System.out.println(itinerarioString + "\n");
 			System.out.println("Gracias por su compra, ¡VUELVA PRONTOS!\n\n\n");
 		}
+
 		teclado.close();
 	}
 

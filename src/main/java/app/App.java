@@ -14,6 +14,7 @@ public class App {
 		parque.getPromociones();
 		parque.getSugerencias();
 
+		
 		Consola.bienvenidaAlParque();
 
 	}
