@@ -1,4 +1,4 @@
-package paradigma;
+package model;
 
 public class PromocionPorcentual extends Promocion {
 

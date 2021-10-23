@@ -1,4 +1,4 @@
-package paradigma;
+package model;
 
 public abstract class Promocion extends Sugerencia {
 
@@ -16,8 +16,9 @@ public abstract class Promocion extends Sugerencia {
 	}
 
 	public int getId() {
-		return  id;
+		return id;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}

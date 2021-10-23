@@ -2,19 +2,14 @@ package app;
 
 import java.sql.SQLException;
 
-import paradigma.Consola;
-import paradigma.ParqueAvSiempreViva;
+import model.Consola;
+import model.ParqueAvSiempreViva;
 
 public class App {
 
 	public static void main(String[] args) throws SQLException {
-		ParqueAvSiempreViva parque = new ParqueAvSiempreViva();
-		parque.getUsuarios();
-		parque.getAtracciones();
-		parque.getPromociones();
-		parque.getSugerencias();
-
-		
+		ParqueAvSiempreViva.getAtracciones();
+		ParqueAvSiempreViva.getPromociones();
 		Consola.bienvenidaAlParque();
 
 	}

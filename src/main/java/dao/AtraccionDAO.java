@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 import jdbc.ConnectionProvider;
-import paradigma.Atraccion;
+import model.Atraccion;
 
 public class AtraccionDAO {
 
@@ -37,10 +37,8 @@ public class AtraccionDAO {
 		return rows;
 	}
 
-
 	private Atraccion atraccion(ResultSet resultados) throws SQLException {
-		return new Atraccion(resultados.getInt("id"), resultados.getString("nombre"), 
-				resultados.getInt("duracion"), resultados.getInt("precio"), resultados.getInt("cupo"),
-				resultados.getString("fk_tipoDeAtraccion"));
+		return new Atraccion(resultados.getInt("id"), resultados.getString("nombre"), resultados.getInt("duracion"),
+				resultados.getInt("precio"), resultados.getInt("cupo"), resultados.getString("fk_tipoDeAtraccion"));
 	}
 }

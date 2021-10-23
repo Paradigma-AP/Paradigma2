@@ -1,4 +1,4 @@
-package paradigma;
+package model;
 
 public class PromocionTresPorDos extends Promocion {
 

@@ -1,4 +1,4 @@
-package paradigma;
+package model;
 
 public class PromocionAbsoluta extends Promocion {
 
@@ -7,8 +7,6 @@ public class PromocionAbsoluta extends Promocion {
 	public PromocionAbsoluta(int id, String nombre, String tipoDePromocion, Atraccion[] atracciones) {
 		super(id, nombre, tipoDePromocion, atracciones);
 	}
-
-
 
 	@Override
 	public double getPrecio() {

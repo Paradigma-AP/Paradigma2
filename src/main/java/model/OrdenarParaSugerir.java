@@ -1,4 +1,4 @@
-package paradigma;
+package model;
 
 import java.util.Comparator;
 
@@ -10,7 +10,7 @@ public class OrdenarParaSugerir implements Comparator<Sugerencia> {
 		this.atraccionFavorita = atraccionFavorita;
 	}
 
-	//@Override // me pide sacar la anotacion
+	//@Override // me pide sacar la anotacion PREGUNTAR SI VA EQUALS Y VISEVERSA
 	public int compare(Sugerencia o1, Sugerencia o2) {
 
 		if (o1.getTipoDeAtraccion() == atraccionFavorita && o2.getTipoDeAtraccion() != atraccionFavorita) {

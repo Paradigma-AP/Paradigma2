@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import jdbc.ConnectionProvider;
-import paradigma.Usuario;
+import model.Usuario;
 
 public class UsuarioDAO {
 
@@ -24,12 +24,12 @@ public class UsuarioDAO {
 	}
 
 	public int actualizarTiempoYPresupuesto(Usuario usuario) throws SQLException {
-		String sql = "UPDATE usuario SET tiempo_disponible = ?, presupuesto = ?  WHERE id = ?"; 
+		String sql = "UPDATE usuario SET tiempo_disponible = ?, presupuesto = ?  WHERE id = ?";
 		Connection conn = ConnectionProvider.getConnection();
 		PreparedStatement statement = conn.prepareStatement(sql);
 
 		statement.setInt(1, usuario.getTiempoDisponibleEnHoras());
-		statement.setInt(2, usuario.getPresupuesto());		
+		statement.setInt(2, usuario.getPresupuesto());
 		statement.setInt(3, usuario.getId());
 
 		int rows = statement.executeUpdate();
@@ -38,8 +38,7 @@ public class UsuarioDAO {
 	}
 
 	private Usuario usuarioResult(ResultSet resultados) throws SQLException {
-		return new Usuario(resultados.getInt("id"), resultados.getString("nombre"), 
-				resultados.getInt("tiempo_disp"),resultados.getInt("presupuesto"), 
-				resultados.getString("fk_tipoDeAtraccion"));
+		return new Usuario(resultados.getInt("id"), resultados.getString("nombre"), resultados.getInt("tiempo_disp"),
+				resultados.getInt("presupuesto"), resultados.getString("fk_tipoDeAtraccion"));
 	}
 }

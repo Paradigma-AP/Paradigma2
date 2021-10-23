@@ -1,4 +1,4 @@
-package paradigma;
+package model;
 
 public abstract class Sugerencia {
 

@@ -1,4 +1,4 @@
-package paradigma;
+package model;
 
 import java.util.ArrayList;
 

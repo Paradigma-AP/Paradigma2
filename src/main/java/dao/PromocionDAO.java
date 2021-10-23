@@ -3,7 +3,7 @@ package dao;
 import java.sql.*;
 import java.util.LinkedList;
 import jdbc.ConnectionProvider;
-import paradigma.*;
+import model.*;
 
 public class PromocionDAO {
 
@@ -18,20 +18,20 @@ public class PromocionDAO {
 			int id = resultados.getInt("id");
 			String nombre = resultados.getString("nombre");
 			String tipo = resultados.getString("fk_tipoDeAtraccion");
-			String [] atraccionString = resultados.getString("list_atr").split(",");
-			Atraccion [] atracciones = new Atraccion [atraccionString.length];
+			String[] atraccionString = resultados.getString("list_atr").split(",");
+			Atraccion[] atracciones = new Atraccion[atraccionString.length];
 			for (int i = 0; i < atraccionString.length; i++) {
 				for (Atraccion atraccion : atr) {
 					if (atraccion.getId() == Integer.valueOf(atraccionString[i])) {
-						atracciones [i] = atraccion;
+						atracciones[i] = atraccion;
 					}
 				}
 			}
-			if(resultados.getInt("id") == 1) {
+			if (resultados.getInt("id") == 1) {
 				promocion.add(new PromocionAbsoluta(id, nombre, tipo, atracciones));
-			}else if(resultados.getInt("id") == 2) {
-					promocion.add(new PromocionTresPorDos(id, nombre, tipo, atracciones));
-			}else if(resultados.getInt("id") == 3) {
+			} else if (resultados.getInt("id") == 2) {
+				promocion.add(new PromocionTresPorDos(id, nombre, tipo, atracciones));
+			} else if (resultados.getInt("id") == 3) {
 				promocion.add(new PromocionPorcentual(id, nombre, tipo, atracciones));
 			}
 		}

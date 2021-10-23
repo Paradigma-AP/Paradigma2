@@ -1,21 +1,21 @@
-package paradigma;
+package model;
 
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.Scanner;
 import dao.ItinerarioDAO;
 
+
 public class Consola {
 	private static Scanner teclado = new Scanner(System.in);
-	private static ItinerarioDAO itinerario = new ItinerarioDAO();
-	private static ParqueAvSiempreViva parque = new ParqueAvSiempreViva();
-	
+	public static ItinerarioDAO itinerario = new ItinerarioDAO();
+
 	public static void bienvenidaAlParque() throws SQLException {
-		LinkedList<Usuario> usuarios = parque.getUsuarios();
-		LinkedList<Sugerencia> sugerencias = parque.getSugerencias();
+		LinkedList<Usuario> usuarios = ParqueAvSiempreViva.getUsuarios();
+		LinkedList<Sugerencia> sugerencias = ParqueAvSiempreViva.getSugerencias();
 		itinerario.crearTablaItinerario();
 		for (Usuario usuario : usuarios) {
-			parque.ordenarPorPreferencia(sugerencias, usuario.getAtraccionPreferida());
+			ParqueAvSiempreViva.ordenarPorPreferencia(sugerencias, usuario.getAtraccionPreferida());
 			System.out.println("¡Hola " + usuario.getNombre()
 					+ "! Bienvenide al Parque Av. Siempre Viva, ¡Donde nada puede MALIR SAL!" + "\n");
 			System.out.println("Tu dinero disponible es de " + usuario.getPresupuesto() + " fichas de Tomy y Daly"
@@ -64,5 +64,4 @@ public class Consola {
 			itinerario.insert(usuario, sugerencia);
 		}
 	}
-
 }
