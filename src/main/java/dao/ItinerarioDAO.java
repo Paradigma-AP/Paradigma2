@@ -1,17 +1,12 @@
 package dao;
 
 import java.sql.*;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Types;
-
 import jdbc.ConnectionProvider;
-import model.Sugerencia;
-import model.Usuario;
+import model.*;
 
 public class ItinerarioDAO {
 
-	public int crearTablaItinerario() throws SQLException { // CORREGIR
+	public int crearTablaItinerario() throws SQLException {
 		String sql = "CREATE TABLE IF NOT EXISTS \"itinerarios_usuarios\" (\r\n" + "	\"id_usuario\"	INTEGER,\r\n"
 				+ "	\"id_atraccion\"	INTEGER CHECK((id_promocion NOTNULL AND id_atraccion ISNULL) OR (id_atraccion NOTNULL AND id_promocion ISNULL)) ,\r\n"
 				+ "	\"id_promocion\"	INTEGER CHECK((id_promocion NOTNULL AND id_atraccion ISNULL) OR (id_atraccion NOTNULL AND id_promocion ISNULL)),\r\n"

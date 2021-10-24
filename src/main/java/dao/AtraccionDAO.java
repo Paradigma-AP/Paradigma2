@@ -1,11 +1,7 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.LinkedList;
-
 import jdbc.ConnectionProvider;
 import model.Atraccion;
 
@@ -25,7 +21,7 @@ public class AtraccionDAO {
 	}
 
 	public int actualizarCupo(Atraccion atraccion) throws SQLException {
-		String sql = "UPDATE atraccion SET cupo_disponible = ? WHERE id = ?";
+		String sql = "UPDATE atraccion SET cupo = ? WHERE id = ?";
 		Connection conn = ConnectionProvider.getConnection();
 		PreparedStatement statement = conn.prepareStatement(sql);
 
