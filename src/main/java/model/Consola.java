@@ -14,13 +14,13 @@ public class Consola {
 		LinkedList<Usuario> usuarios = ParqueAvSiempreViva.getUsuarios();
 		LinkedList<Sugerencia> sugerencias = ParqueAvSiempreViva.getSugerencias();
 		itinerario.crearTablaItinerario();
+		System.out.println("! Bienvenide al Parque Av. Siempre Viva, ¡Donde nada puede MALIR SAL!" + "\n");
+		int contador = 0;
+		while(contador < 2) {
 		for (Usuario usuario : usuarios) {
 			ParqueAvSiempreViva.ordenarPorPreferencia(sugerencias, usuario.getAtraccionPreferida());
-			System.out.println("¡Hola " + usuario.getNombre()
-					+ "! Bienvenide al Parque Av. Siempre Viva, ¡Donde nada puede MALIR SAL!" + "\n");
-			System.out.println("Tu dinero disponible es de " + usuario.getPresupuesto() + " fichas de Tomy y Daly"
-					+ "\nTu tiempo disponible para disfrutar en el parque es de " + usuario.getTiempoDisponibleEnHoras()
-					+ " horas\n");
+			System.out.println("¡Hola " + usuario.getNombre() +" Tu dinero disponible es de " + usuario.getPresupuesto() + " fichas de Tomy y Daly"
+					+ "\nTu tiempo disponible para disfrutar en el parque es de " + usuario.getTiempoDisponibleEnHoras() + " horas\n");
 			System.out.println("Tenemos para ofrecerte las siguientes actividades:\n");
 			for (Sugerencia sugerencia : sugerencias) {
 				if (usuario.puedeComprarSugerencia(sugerencia) && sugerencia.tieneCupoDisponible()
@@ -41,7 +41,7 @@ public class Consola {
 					Consola.comprarSugerencia(usuario, sugerencia);
 				}
 			}
-			System.out.println("\n\nTotal de fichas gastadas: " + usuario.getCostoTotalItinerario()
+			System.out.println(usuario.getNombre()+"\n\nTu total de fichas gastadas: " + usuario.getCostoTotalItinerario()
 					+ "\nTiempo necesario: " + usuario.getTiempoTotalItinerario());
 			String itinerarioString = "";
 			for (String itinerario : usuario.getItinerario()) {
@@ -49,6 +49,9 @@ public class Consola {
 			}
 			System.out.println(itinerarioString + "\n");
 			System.out.println("Gracias por su compra, ¡VUELVA PRONTOS!\n\n\n");
+		}
+		System.out.println("Bienvenidos nuevamente a la boleteria del parque!"+ "\n");
+			contador++;
 		}
 		teclado.close();
 	}
