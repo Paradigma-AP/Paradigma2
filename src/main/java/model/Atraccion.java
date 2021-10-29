@@ -17,7 +17,7 @@ public class Atraccion extends Sugerencia {
 		this.cupoDisponible = cupo;
 		this.tipoDeAtraccion = tipoDeAtraccion;
 	}
-	
+
 	public int getId() {
 		return id;
 	}

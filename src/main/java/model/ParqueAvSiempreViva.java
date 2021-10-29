@@ -1,6 +1,5 @@
 package model;
 
-import java.sql.SQLException;
 import java.util.Collections;
 import java.util.LinkedList;
 
@@ -10,24 +9,33 @@ import dao.UsuarioDAO;
 
 public class ParqueAvSiempreViva {
 
-	private static LinkedList<Atraccion> atracciones = new LinkedList<Atraccion>();
-	private static LinkedList<Promocion> promociones = new LinkedList<Promocion>();
-	private static LinkedList<Usuario> usuarios = new LinkedList<Usuario>();
-	private static LinkedList<Sugerencia> sugerencias = new LinkedList<Sugerencia>();
+	private static LinkedList<Atraccion> atracciones;
+	private static LinkedList<Promocion> promociones;
+	private static LinkedList<Usuario> usuarios;
+	private static LinkedList<Sugerencia> sugerencias;
 
-	public static LinkedList<Atraccion> getAtracciones() throws SQLException {
-		AtraccionDAO atraccion = new AtraccionDAO();
-		return atracciones = atraccion.leerAtracciones();
+	public static LinkedList<Atraccion> getAtracciones() {
+		if (atracciones == null) {
+			AtraccionDAO atraccion = new AtraccionDAO();
+			atracciones = atraccion.leerAtracciones();
+		}
+		return atracciones;
 	}
 
-	public static LinkedList<Promocion> getPromociones() throws SQLException {
-		PromocionDAO promocion = new PromocionDAO();
-		return promociones = promocion.leerPromociones(atracciones);
+	public static LinkedList<Promocion> getPromociones() {
+		if (promociones == null) {
+			PromocionDAO promocion = new PromocionDAO();
+			promociones = promocion.leerPromociones(atracciones);
+		}
+		return promociones;
 	}
 
-	public static LinkedList<Usuario> getUsuarios() throws SQLException {
-		UsuarioDAO usuario = new UsuarioDAO();
-		return usuarios = usuario.leerUsuarios();
+	public static LinkedList<Usuario> getUsuarios() {
+		if (usuarios == null) {
+			UsuarioDAO usuario = new UsuarioDAO();
+			usuarios = usuario.leerUsuarios();
+		}
+		return usuarios;
 	}
 
 	public static void ordenarPorPreferencia(LinkedList<Sugerencia> sugerencias, String tipo) {
@@ -35,15 +43,12 @@ public class ParqueAvSiempreViva {
 	}
 
 	public static LinkedList<Sugerencia> getSugerencias() {
-		for(Atraccion atr : atracciones) {
-			if(!sugerencias.contains(atr)) {
-				sugerencias.add(atr);
-			}
+		if (sugerencias == null) {
+			sugerencias = new LinkedList<Sugerencia>();
 		}
-		for(Promocion promo : promociones) {
-			if(!sugerencias.contains(promo)) {
-				sugerencias.add(promo);
-			}
+		if (sugerencias.isEmpty()) {
+			sugerencias.addAll(atracciones);
+			sugerencias.addAll(promociones);
 		}
 		return sugerencias;
 	}

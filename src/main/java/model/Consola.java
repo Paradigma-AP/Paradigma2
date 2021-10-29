@@ -1,9 +1,11 @@
 package model;
 
-import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.Scanner;
-import dao.*;
+
+import dao.AtraccionDAO;
+import dao.ItinerarioDAO;
+import dao.UsuarioDAO;
 
 public class Consola {
 	private static Scanner teclado = new Scanner(System.in);
@@ -11,10 +13,9 @@ public class Consola {
 	public static UsuarioDAO usuarioDAO = new UsuarioDAO();
 	public static AtraccionDAO atraccionDAO = new AtraccionDAO();
 
-	public static void bienvenidaAlParque() throws SQLException {
+	public static void bienvenidaAlParque() {
 		LinkedList<Usuario> usuarios = ParqueAvSiempreViva.getUsuarios();
 		LinkedList<Sugerencia> sugerencias = ParqueAvSiempreViva.getSugerencias();
-		itinerarioDAO.crearTablaItinerario();
 		System.out.println("! Bienvenide al Parque Av. Siempre Viva, ¡Donde nada puede MALIR SAL!" + "\n");
 		int contador = 0;
 		while (contador < 2) {
@@ -61,7 +62,7 @@ public class Consola {
 		teclado.close();
 	}
 
-	public static void comprarSugerencia(Usuario usuario, Sugerencia sugerencia) throws SQLException {
+	public static void comprarSugerencia(Usuario usuario, Sugerencia sugerencia) {
 		System.out.println("\n¿Te gustaria hacer esta actividad? Si/No");
 		char respuesta;
 		respuesta = teclado.nextLine().charAt(0);

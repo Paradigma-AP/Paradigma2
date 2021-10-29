@@ -2,17 +2,22 @@ package jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
+
+import dao.MissingDataException;
 
 public class ConnectionProvider {
 
 	private static String url = "jdbc:sqlite:Paradigma.db";
 	private static Connection connection;
 
-	public static Connection getConnection() throws SQLException {
-		if (connection == null) {
-			connection = DriverManager.getConnection(url);
+	public static Connection getConnection() {
+		try {
+			if (connection == null) {
+				connection = DriverManager.getConnection(url);
+			}
+			return connection;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
 		}
-		return connection;
 	}
 }

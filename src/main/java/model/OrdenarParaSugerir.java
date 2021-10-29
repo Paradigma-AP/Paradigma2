@@ -13,9 +13,9 @@ public class OrdenarParaSugerir implements Comparator<Sugerencia> {
 	@Override
 	public int compare(Sugerencia o1, Sugerencia o2) {
 
-		if (o1.getTipoDeAtraccion() == atraccionFavorita && o2.getTipoDeAtraccion() != atraccionFavorita) {
+		if (o1.getTipoDeAtraccion().equals(atraccionFavorita) && (!o2.getTipoDeAtraccion().equals(atraccionFavorita))) {
 			return -1;
-		} else if (o1.getTipoDeAtraccion() != atraccionFavorita && o2.getTipoDeAtraccion() == atraccionFavorita) {
+		} else if ((!o1.getTipoDeAtraccion().equals(atraccionFavorita)) && o2.getTipoDeAtraccion().equals(atraccionFavorita)) {
 			return 1;
 		}
 		if (o1.esPromocion() && !o2.esPromocion()) {
