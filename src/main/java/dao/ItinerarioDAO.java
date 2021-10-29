@@ -12,7 +12,7 @@ public class ItinerarioDAO {
 
 	public int insert(Usuario usuario, Sugerencia sugerencia) {
 		try {
-			String sql = "INSERT INTO itinerarios_usuarios (id_usuario, id_atraccion, id_promocion) VALUES (?,?,?)";
+			String sql = "INSERT INTO itinerarios_usuarios (fk_usuario, fk_atraccion, fk_promocion) VALUES (?,?,?)";
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement statement = conn.prepareStatement(sql);
 

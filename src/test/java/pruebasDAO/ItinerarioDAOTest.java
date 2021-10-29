@@ -55,15 +55,15 @@ public class ItinerarioDAOTest {
 		ResultSet resultado = statement.executeQuery();
 		
 		int esperadoAtraccion = 1;
-		int obtenidoAtraccion = resultado.getInt("id_atraccion");
+		int obtenidoAtraccion = resultado.getInt("fk_atraccion");
 		assertEquals(obtenidoAtraccion, esperadoAtraccion);
 		
 		int esperadoUsuario = 1;
-		int obtenidoUsuario = resultado.getInt("id_usuario");
+		int obtenidoUsuario = resultado.getInt("fk_usuario");
 		assertEquals(esperadoUsuario, obtenidoUsuario);
 		
 		int esperadoPromo = 0;
-		int obtenidoPromo = resultado.getInt("id_promocion");
+		int obtenidoPromo = resultado.getInt("fk_promocion");
 		assertEquals(esperadoPromo, obtenidoPromo);
 
 	}
@@ -78,15 +78,15 @@ public class ItinerarioDAOTest {
 		ResultSet resultado = statement.executeQuery();
 		
 		int esperadoAtraccion = 0;
-		int obtenidoAtraccion = resultado.getInt("id_atraccion");
+		int obtenidoAtraccion = resultado.getInt("fk_atraccion");
 		assertEquals(obtenidoAtraccion, esperadoAtraccion);
 		
 		int esperadoUsuario = 1;
-		int obtenidoUsuario = resultado.getInt("id_usuario");
+		int obtenidoUsuario = resultado.getInt("fk_usuario");
 		assertEquals(esperadoUsuario, obtenidoUsuario);
 		
 		int esperadoPromo = 1;
-		int obtenidoPromo = resultado.getInt("id_promocion");
+		int obtenidoPromo = resultado.getInt("fk_promocion");
 		assertEquals(esperadoPromo, obtenidoPromo);
 
 	}
